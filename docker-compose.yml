@@ -1,0 +1,19 @@
+version: '3'
+services:
+  db:
+    image: postgres:11.0
+    container_name: db
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PW}
+      - POSTGRES_DB=${DB_DB}
+    ports:
+      - ${DB_PORT}:5432
+    tty: true
+    stdin_open: true
+    restart: always
+    volumes:
+      - data_volume_db:/var/lib/postgresql/data
+      - ./mount:/ingest:ro
+volumes:
+  data_volume_db:
