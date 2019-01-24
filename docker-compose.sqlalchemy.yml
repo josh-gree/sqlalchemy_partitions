@@ -1,0 +1,14 @@
+version: '3'
+services:
+  db:
+    image: db
+    container_name: db
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PW}
+      - POSTGRES_DB=${DB_DB}
+    ports:
+      - ${DB_PORT}:5432
+    tty: true
+    stdin_open: true
+    restart: always
